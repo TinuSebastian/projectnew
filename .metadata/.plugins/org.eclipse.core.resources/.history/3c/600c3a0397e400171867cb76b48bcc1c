@@ -1,0 +1,13 @@
+package com.niit.WearStyleBackend.DAO;
+
+import java.util.List;
+
+import com.niit.WearStyleBackend.Model.User;
+
+public interface UserDAO 
+{
+	public boolean insertUser(User userDAO);
+	public List<User> retrieveUser(); 
+	public User getUser(String username);
+
+}

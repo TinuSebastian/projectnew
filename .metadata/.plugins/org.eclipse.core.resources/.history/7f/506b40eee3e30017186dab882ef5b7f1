@@ -1,0 +1,60 @@
+package com.niit.WearStyleBackend.DAOImpl;
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.niit.WearStyleBackend.DAO.SupplierDAO;
+import com.niit.WearStyleBackend.Model.Supplier;
+
+public class SupplierDAOIml implements SupplierDAO {
+	@Autowired
+	SessionFactory sessionFactory;
+
+	public SupplierDAOIml(SessionFactory sessionFactory) {
+		super();
+		this.sessionFactory = sessionFactory;
+	}
+
+	public boolean addSupplier(Supplier supplier) {
+		try
+		{
+			sessionFactory.getCurrentSession().saveOrUpdate(supplier);
+			return true;
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+		
+	}
+
+	public List<Supplier> retrieveSupplier() {
+		 Session session=sessionFactory.openSession();
+	        Query query=session.createQuery("from Supplier");
+	        List<Supplier> listSupplier=query.list();
+	        session.close();
+	        return listSupplier;
+	}
+
+	public boolean deleteSupplier(Supplier supplier) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Supplier getSupplier(int splrId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean updateSupplier(Supplier supplier) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+}
+
+	

@@ -1,0 +1,75 @@
+package com.niit.WearStyleBackend.DAOImpl;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.niit.WearStyleBackend.DAO.UserDAO;
+import com.niit.WearStyleBackend.Model.User;
+
+@Repository
+public class UserDAOIml implements UserDAO
+{
+	@Autowired
+	private SessionFactory sessionF;
+	
+	
+
+	public UserDAOIml(SessionFactory sessionF) {
+		super();
+		this.sessionF = sessionF;
+	}
+	
+	
+
+	public UserDAOIml() {
+		super();
+	}
+
+
+
+	@Transactional
+
+	public boolean insertUser(User user)
+	{
+		try
+		{
+			Session session=sessionF.openSession();
+			session.beginTransaction();
+			session.persist(user);
+			session.getTransaction().commit();
+			return true;
+		}
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+			return false;
+		}
+			
+	}
+
+	public List<User> retrieveUser() 
+	{
+		Session session=sessionF.openSession();
+        Query query=session.createQuery("from User");
+        List<User> listUser=query.list();
+        session.close();
+        return listUser;
+		
+	}
+
+	public User getUser(String user)
+	{
+		Session session=sessionF.openSession();
+		User u=(User)session.get(User.class,user);
+		session.close();
+		return u;
+	
+		
+	}
+}

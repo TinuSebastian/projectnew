@@ -1,0 +1,12 @@
+package com.niit.Controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+public class AdminController {
+	
+@RequestMapping("/")
+String index()
+{
+	return "index";
+	}
+}

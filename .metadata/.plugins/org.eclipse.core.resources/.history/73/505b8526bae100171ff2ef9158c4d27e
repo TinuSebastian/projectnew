@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <import resource="datasource-config.xml" />
+        <import resource="webflow-config.xml" />
+
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+">
+</beans>
+    <security:intercept-url pattern="/admin/**"
+    access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/login"
+     access="permitAll" />
+  <!--   <security:intercept-url pattern="/user/**"
+     access="hasRole('ROLE USER')" /> -->
+		<security:form-login 
+		    login-processing-url="/j_spring_security_check"
+			password-parameter="j_password"
+			 username-parameter="j_username"
+			 authentication-failure-url="/error" 
+			default-target-url="/"
+			login-page="/login" />
+			
+
+		<security:logout
+		     logout-url="/j_spring_security_logout"
+			logout-success-url="/" />
+            <security:access-denied-handler
+                     error-page="/error" />
+		<!-- enable csrf protection -->
+		<security:csrf disabled="true" />
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service
+				data-source-ref="datasource"
+				users-by-username-query="SELECT email, password, 'true' as enabled FROM User WHERE email = ?"
+				authorities-by-username-query="SELECT email, role From User WHERE email = ?" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>
