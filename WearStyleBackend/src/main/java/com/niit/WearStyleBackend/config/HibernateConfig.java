@@ -14,6 +14,7 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.WearStyleBackend.models.Cart;
 import com.niit.WearStyleBackend.models.Category;
 import com.niit.WearStyleBackend.models.Product;
 import com.niit.WearStyleBackend.models.Supplier;
@@ -36,8 +37,8 @@ public class HibernateConfig
 	        sessionBuilder.addAnnotatedClass(Category.class);
 	        sessionBuilder.addAnnotatedClass(Supplier.class);
 	        sessionBuilder.addAnnotatedClass(User.class);
-	        sessionBuilder.addAnnotatedClass(Product.class);/*
-	        sessionBuilder.addAnnotatedClass(Cart.class);*/
+	        sessionBuilder.addAnnotatedClass(Product.class);
+	        sessionBuilder.addAnnotatedClass(Cart.class);
 	        sessionBuilder.addAnnotatedClass(Order.class);
 	        
 	        return sessionBuilder.buildSessionFactory();

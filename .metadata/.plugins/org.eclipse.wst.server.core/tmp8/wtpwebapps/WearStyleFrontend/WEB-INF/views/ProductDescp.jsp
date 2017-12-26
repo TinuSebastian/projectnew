@@ -214,7 +214,7 @@ img {
 						<p class="product-description"> ${product.productDesc}</p>
 						<h4 class="price">current price: <span>${product.price}</span></h4>
 						<h5 class="price">Available Stock : <span>${product.stock}</span></h4>
-						<form action="addCart" method="post">
+						<form action="user/addCart" method="post">
 						
 						 <div>
                            <input type="hidden" value="${product.productId }" name="pid">

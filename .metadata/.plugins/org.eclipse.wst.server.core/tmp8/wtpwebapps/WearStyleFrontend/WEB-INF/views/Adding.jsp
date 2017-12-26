@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ADMIN</title>
+<title>Insert title here</title>
 </head>
 <style type="text/css">
 body
 {
-    background: url('${pageContext.request.contextPath}/resources/windows-central-background.jpg') fixed;
+    background: url('${pageContext.request.contextPath}/resources/backgroundnew.jpg') fixed;
     background-size: cover;
     padding: 0;
     margin: 0;

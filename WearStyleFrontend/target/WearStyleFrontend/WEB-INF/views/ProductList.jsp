@@ -81,7 +81,7 @@
     <div id="products" class="row list-group">
       <c:forEach items="${productList}" var="product">
         <div class="item  col-xs-4 col-lg-4">
-            <div class="thumbnail" style="width:300px;height: 300px">
+            <div class="thumbnail" style="width:200px;height: 200px">
                 <img class="group list-group-image" src="${pageContext.request.contextPath}/resources/${product.productId}.jpg"  alt="" />
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading">

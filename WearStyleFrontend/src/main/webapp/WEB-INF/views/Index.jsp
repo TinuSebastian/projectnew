@@ -3,19 +3,13 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
 <title>WearStyle</title>
-<style type="text/css">
-body {
-   background-color: black;
-}
-</style>
 </head>
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:1000px;height: 500px">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -28,30 +22,31 @@ body {
     </ol>
 
     <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <img src="${pageContext.request.contextPath}/resources/casualwear.jpg" alt="casualwear" style="width:100%;">
+    <div class="carousel-inner" style="width:1500px;height: 600px">
+      <div class="item active" style="width:1500px;height: 600px">
+        <img src="${pageContext.request.contextPath}\resources\ethnicwearnew.jpg" alt="ethnicwear" style="width:1800px;height: 600px">
+        <div class="text">ETHNIC WEAR</div>
+      
+      
       </div>
 
-      <div class="item">
-        <img src="${pageContext.request.contextPath}/resources/kids%20wear.jpg" alt="kidswear"  style="width:100%;">
+      <div class="item" style="width:1500px;height: 600px">
+        <img src="${pageContext.request.contextPath}\resources\kidswear.jpg" alt="kidswear" style="width:1800px;height: 600px">
+        <div class="text">ETHNIC WEAR</div>
       </div>
     
-      <div class="item">
-        <img src="${pageContext.request.contextPath}/resources/party%20wear.jpg" alt="partywear" style="width:100%;">
+      <div class="item" style="width:1500px;height: 600px"">
+        <img src="${pageContext.request.contextPath}\resources\mens wear.jpg" alt="menswear" style="width:1800px;height: 600px">
       </div>
    
- <div class="item">
-        <img src="${pageContext.request.contextPath}/resources/gents%20wear.jpg" alt="gentswear" style="width:100%;">
+ <div class="item" style="width:1500px;height: 600px">
+        <img src="${pageContext.request.contextPath}\resources\sports and gymnew.jpg" alt="gentswear" style="width:1800px;height: 600px"">
       </div>
   
-    <div class="item">
-        <img src="${pageContext.request.contextPath}/resources/weddingwear.jpg" alt="wedding wear" style="width:100%;">
+    <div class="item" style="width:1500px;height: 600px">
+        <img src="${pageContext.request.contextPath}\resources\western new.jpg" alt="wedding wear" style="width:1800px;height: 600px">
       </div>
-      </div>
-    </div>
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+       <a class="left carousel-control" href="#myCarousel" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left"></span>
       <span class="sr-only">Previous</span>
     </a>
@@ -59,7 +54,15 @@ body {
       <span class="glyphicon glyphicon-chevron-right"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
+      </div>
+    
+    </div>
+     
+    <!-- Left and right controls -->
+    
+
+ 
+
   
 <jsp:include page="Footer.jsp"></jsp:include>
 </body>

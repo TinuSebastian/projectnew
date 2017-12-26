@@ -1,5 +1,0 @@
-package com.niit.WearStyleBackend.DAO;
-
-public interface OrderDAO {
-
-}

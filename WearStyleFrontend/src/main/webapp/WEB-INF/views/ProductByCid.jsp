@@ -77,20 +77,13 @@
 
 <div class="container">
 
-    <div class="well well-sm">
-       <!--  <strong>Mode</strong> -->
-        <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
-        </div>
-    </div>
+   
    
     <div id="products" class="row list-group">
       <c:forEach items="${productList}" var="product">
-        <div class="item  col-xs-4 col-lg-4">
-            <div class="thumbnail" style="width:300px;height: 300px">
-                <img class="group list-group-image" src="${pageContext.request.contextPath}/resources/${product.productId}.jpg"  alt="" />
+        <div class="item  col-xs-4 col-lg-4" style="width: 1000px;height: 1000px;">
+            <div class="thumbnail" style="width:300px;height: 1000px">
+                <img class="group list-group-image" src="${pageContext.request.contextPath}/resources/${product.productId}.jpg"  alt="" style="width: 300px;height: 300px;" />
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading">
                        ${product.productName}</h4>

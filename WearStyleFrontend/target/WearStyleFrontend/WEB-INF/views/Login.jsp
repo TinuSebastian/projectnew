@@ -9,7 +9,7 @@
 <style type="text/css">
  body
 {
-    background: url('./resources/background.jpg') fixed;
+    background: url('${pageContext.request.contextPath}/resources/background.jpg') fixed;
     background-size: cover;
     padding: 0;
     margin: 0;
@@ -43,7 +43,7 @@
   <div class="container">
 
 <div class="row" style="margin-top:40px">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+<h4 align="center">${param.msg }</h4>
 		<form action="j_spring_security_check" method="post">
 			<fieldset>
 				<center><h2><font color="white" >Login Here</font></h2></center>

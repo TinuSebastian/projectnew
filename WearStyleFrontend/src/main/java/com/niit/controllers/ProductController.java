@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,7 +44,15 @@ public class ProductController
 	        m.addAttribute("productList",listProducts);
 	        return "Product";
 	    }
-	    
+	    @RequestMapping(value="/user/productList",method=RequestMethod.GET)
+	    public String productByCat(@RequestParam("cid") int cId,Model m)
+	    {
+	    	
+	    	m.addAttribute("cid",cId);
+	    	
+		    
+		    return "redirect:/productList";
+	    }
 	    
 	    @RequestMapping(value="/productList",method=RequestMethod.GET)
 	    public String productListByCat(@RequestParam("cid") int cId,Model m)
@@ -58,18 +67,20 @@ public class ProductController
 		    return "ProductList";
 	    }
 	    
-	   	    @RequestMapping(value="/admin/InsertProduct",method=RequestMethod.POST)
+	   	 /*   @RequestMapping(value="/admin/InsertProduct",method=RequestMethod.POST,consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
 	    public String insertProduct(@RequestParam("productName") String productName,@RequestParam("productDesc") String productDesc,@RequestParam("stock") int stock,@RequestParam("sup") int sid,@RequestParam("cat") int cid,@RequestParam("price") int price,@RequestParam("pimage")MultipartFile fileDetail,Model m)
+	    {*/
+	    @RequestMapping(value="/admin/InsertProduct")
+	    String saveProduct(@RequestParam("productName")String productname,@RequestParam("productDesc")String productDescription,@RequestParam("price")int price,@RequestParam("stock")int quantity,@RequestParam("cat")int cid,@RequestParam("sup")int sid,@RequestParam("pimage")MultipartFile file,Model m)
 	    {
-	         
 	        Product p=new Product();
-	        p.setProductName(productName);
+	        p.setProductName(productname);
 	        p.setPrice(price);
-	        p.setProductDesc(productDesc);
-	        p.setStock(stock);
+	        p.setProductDesc(productDescription);
+	        p.setStock(quantity);
 	        p.setCategory(categoryDao.getCategory(cid));
 	        p.setSupplier(supplierDao.getSupplier(sid));
-	        p.setPimage(fileDetail);
+	        p.setPimage(file);
 	        
 	        productDAO.addProduct(p);
 	        
@@ -82,11 +93,11 @@ public class ProductController
 	         
 	        File productImage=new File(totalFileWithPath);
 	         
-	        if(!fileDetail.isEmpty())
+	        if(!file.isEmpty())
 	        {
 	            try
 	            {
-	                byte fileBuffer[]=fileDetail.getBytes();
+	                byte fileBuffer[]=file.getBytes();
 	                FileOutputStream fos=new FileOutputStream(productImage);
 	                BufferedOutputStream bs=new BufferedOutputStream(fos);
 	                bs.write(fileBuffer);

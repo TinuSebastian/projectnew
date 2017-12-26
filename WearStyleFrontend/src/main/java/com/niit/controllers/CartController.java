@@ -24,7 +24,6 @@ import com.niit.WearStyleBackend.models.Orders;
 import com.niit.WearStyleBackend.models.Product;
 import com.niit.WearStyleBackend.models.User;
 
-
 @Controller
 public class CartController 
 {
@@ -43,16 +42,17 @@ public class CartController
 	@Autowired
 	OrdersDao ordersDao;
 	
-	@RequestMapping(value="/addCart",method=RequestMethod.POST)
-  	public String addCart(@RequestParam("pid")int pid, @RequestParam("qty")int qty,Model m)
+	@RequestMapping(value="/addCart")
+  	public String addCart(Model m,@RequestParam("pid")int pid, @RequestParam("qty")int qty)
   	{
-		m.addAttribute("pid",pid);
-		m.addAttribute("qty",qty);
 		
+		m.addAttribute("pid", pid);
+		m.addAttribute("qty", qty);
 		return "redirect:/user/addCart";
   	}
+  	
 	
-	@RequestMapping(value="/user/addCart",method=RequestMethod.GET)
+	@RequestMapping(value="/user/addCart")
   	public ModelAndView goToaddCart(@RequestParam("pid")int pid, @RequestParam("qty")int qty)
   	{
   		
@@ -101,6 +101,13 @@ public class CartController
 		return mv;
   	}
 	
+	@RequestMapping("/Cart")
+  	public ModelAndView mycart(@RequestParam("status") String status)
+  	{
+		ModelAndView mv=new ModelAndView("redirect:/user/Cart");
+		 mv.addObject("status", status);
+		return mv;
+  	}
 
 	@RequestMapping("/user/Cart")
   	public ModelAndView goToCart(@RequestParam("status") String status)
@@ -147,7 +154,7 @@ public class CartController
     public String updateCart(@RequestParam("cid") int cartId,@RequestParam("qty") int qty,Model m)
     {
 		Cart c=cartDao.getCartItem(cartId);
-		System.out.println("Qty:-------------------------"+qty+"\nProduct Qty : "+c);
+		/*System.out.println("Qty:-------------------------"+qty+"\nProduct Qty : "+c);*/
 		if(c.getProduct().getStock()>=qty)
 		{
 		c.setCartQnty(qty);
@@ -226,7 +233,10 @@ public class CartController
 		{
 		cartDao.deleteCart(c);
 		}
+		List<Category> cs=categoryDao.retrieveCategory();
+		ModelAndView mv=new ModelAndView("Ackorder");
+  		mv.addObject("categoryList", cs);
 		
-		return new ModelAndView("Ackorder");
+		return mv;
   	}
 }

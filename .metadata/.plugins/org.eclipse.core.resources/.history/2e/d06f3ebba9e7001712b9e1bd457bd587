@@ -1,0 +1,21 @@
+
+<style>
+.footer {
+postion: fixed;
+padding-bottom:0%;
+    padding: 10px 0 10px 0;
+    background-color: #090c14;
+    color: #878c94;
+}
+</style>
+
+
+
+<!--   FOOTER START================== --> 
+<footer class="footer">
+ 
+        <div class="row">
+      
+        <div class="row text-center"><a href="http://lacodeid.com/" style="color: #fff;">Copyright © WEARSTYLE 2017</a></div>
+    </div>    
+</footer>
