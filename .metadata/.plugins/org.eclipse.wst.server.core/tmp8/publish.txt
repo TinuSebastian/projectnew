@@ -1,4 +1,4 @@
 #Tomcat publish data
-#Mon Dec 25 21:44:53 PST 2017
+#Mon Dec 25 22:43:41 PST 2017
 org.eclipse.jst.j2ee.server\:WearStyleBackend=WEB-INF/lib/WearStyleBackend-0.0.1-SNAPSHOT.jar
 org.eclipse.jst.j2ee.server\:/binary\:C\:\\Users\\House\\.m2\\repository\\org\\springframework\\spring-web\\4.3.9.RELEASE\\spring-web-4.3.9.RELEASE.jar=WEB-INF/lib/spring-web-4.3.9.RELEASE.jar

@@ -23,13 +23,15 @@
          </c:forEach>
         </ul>
       </li></c:if>
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
- 				<li><a href="adding">Admin Task</a></li>
-		</sec:authorize>
-                        <%--  <c:if test="${pageContext.request.userPrincipal.name  == 'tinu@gmail.com'}">
+      <sec:authorize access="hasRole('ROLE_ADMIN')">
+
+
+
+</sec:authorize>
+                         <c:if test="${pageContext.request.userPrincipal.name  == 'tinu@gmail.com'}">
                         <li><a href="adding">Admin Task</a></li>
                         
-                        </c:if> --%>
+                        </c:if>
                         </ul>
                         
                         
